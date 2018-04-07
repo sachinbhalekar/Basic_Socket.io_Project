@@ -1,0 +1,17 @@
+<html>
+	<head>
+		<script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.7.3/socket.io.js'></script>
+		<script type='text/javascript'>
+		   var socket = io('http://localhost:3000', {path: '/socket.io'}); // connect to server
+		   
+		   socket.on('fromServer1', function(data) { // listen for fromServer1 message
+		   console.log('Received : ' + data.id + ' , from server');
+		   socket.emit('fromClient1', {id: 'Hi there'}); // send fromClient1 message to server
+		   });
+		   socket.on('fromServer2', function(data) { // listen for fromServer2 message
+		   console.log('Received : ' + data.id + ' , from server');
+		   socket.emit('fromClient2', {id: 'I am fine'}); // send fromClient2 message to server
+		});
+		</script>
+	</head>
+</html>
